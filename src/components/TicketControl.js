@@ -12,7 +12,7 @@ import {
   deleteDoc,
 } from 'firebase/firestore';
 
-import db from './../firebase.js';
+import {db, auth} from './../firebase.js';
 
 function TicketControl() {
   const [formVisibleOnPage, setFormVisibleOnPage] = useState(false);
@@ -79,7 +79,7 @@ function TicketControl() {
     const selection = mainTicketList.filter((ticket) => ticket.id === id)[0];
     setSelectedTicket(selection);
   };
-  
+
   let currentlyVisibleState = null;
   let buttonText = null;
 

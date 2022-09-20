@@ -22,15 +22,38 @@ function TicketControl() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    function updateTicketElapsedWaitTime() {
+      const newMainTicketList = mainTicketList.map(ticket => {
+        const newFormattedWaitTime = formatDistanceToNow(ticket.timeOpen);
+        return {...ticket, formattedWaitTime: newFormattedWaitTime};
+      });
+      setMainTicketList(newMainTicketList);
+    }
+
+    const waitTimeUpdateTimer = setInterval(() =>
+      updateTicketElapsedWaitTime(), 
+      60000
+    );
+
+    return function cleanup() {
+      clearInterval(waitTimeUpdateTimer);
+    }
+  }, [mainTicketList]);
+
+  useEffect(() => {
     const unSubscribe = onSnapshot(
       collection(db, 'tickets'),
       (collectionSnapShot) => {
         const tickets = [];
         collectionSnapShot.forEach((doc) => {
+          const timeOpen = doc.get('timeOpen', {serverTimestamps: "estimate"}).toDate();
+          const jsDate = new Date(timeOpen);
           tickets.push({
             names: doc.data().names,
             location: doc.data().location,
             issue: doc.data().issue,
+            timeOpen: jsDate,
+            formattedWaitTime: formatDistanceToNow(jsDate),
             id: doc.id,
           });
         });

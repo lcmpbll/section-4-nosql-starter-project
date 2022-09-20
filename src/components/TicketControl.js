@@ -10,6 +10,8 @@ import {
   doc,
   updateDoc,
   deleteDoc,
+  query,
+  orderBy,
 } from 'firebase/firestore';
 import { db, auth } from './../firebase.js';
 import { formatDistanceToNow } from 'date-fns';
@@ -23,29 +25,33 @@ function TicketControl() {
 
   useEffect(() => {
     function updateTicketElapsedWaitTime() {
-      const newMainTicketList = mainTicketList.map(ticket => {
+      const newMainTicketList = mainTicketList.map((ticket) => {
         const newFormattedWaitTime = formatDistanceToNow(ticket.timeOpen);
-        return {...ticket, formattedWaitTime: newFormattedWaitTime};
+        return { ...ticket, formattedWaitTime: newFormattedWaitTime };
       });
       setMainTicketList(newMainTicketList);
     }
 
-    const waitTimeUpdateTimer = setInterval(() =>
-      updateTicketElapsedWaitTime(), 
+    const waitTimeUpdateTimer = setInterval(
+      () => updateTicketElapsedWaitTime(),
       60000
     );
 
     return function cleanup() {
       clearInterval(waitTimeUpdateTimer);
-    }
+    };
   }, [mainTicketList]);
 
   useEffect(() => {
-    const unSubscribe = onSnapshot(
+    const queryByTimestamp = query(
       collection(db, 'tickets'),
-      (collectionSnapShot) => {
+      orderBy('timeOpen')
+    );
+    const unSubscribe = onSnapshot(
+      queryByTimestamp, 
+      (querySnapshot) => {
         const tickets = [];
-        collectionSnapShot.forEach((doc) => {
+        querySnapshot.forEach((doc) => {
           const timeOpen = doc.get('timeOpen', {serverTimestamps: "estimate"}).toDate();
           const jsDate = new Date(timeOpen);
           tickets.push({

@@ -9,8 +9,8 @@ function App(){
     <Router>
       <Header />
       <Routes>
-        <Route path='/sign-in' element={<SignIn />} />
-        <Route paht = '/' element={<TicketControl />} />
+        <Route path ='/sign-in' element={<SignIn />} />
+        <Route path = '/' element={<TicketControl />} />
       </Routes>
       
     </Router>

@@ -1,11 +1,45 @@
-## Important Note to Epicodus Students
+# Help Queue
 
-This project contains all the code from the LearnHowToProgram.com Section 2: React Fundamentals coursework in which we created a Help Queue project. 
+## By Liam Campbell and Derrak Richard
 
-It is meant to be used as a starter repo to continue the Help Queue project in Section 4: React with NoSQL, starting in the lesson "Refactoring Help Queue to Use Hooks":
+## A help ticket creator for it issues.
 
-[https://www.learnhowtoprogram.com/react/react-with-nosql/refactoring-help-queue-to-use-hooks](https://www.learnhowtoprogram.com/react/react-with-nosql/refactoring-help-queue-to-use-hooks)
+## Technologies Used
 
+* React.js
+* Firebase/FireStore
+* Node.js
+* CSS
+* Babel
+* Es-Linter
+
+
+## Description
+
+_A user can sign in and sign up then enter information into a help queue ticket. The ticket takes input such as their name, their location and the issue they are experiencing. The information is then sent to a firestore database that adds a timestamp and orders all of the available help tickets by time created. The tickets may be updated and deleted._
+
+## Installation and Setup
+
+* Clone this repository from git hub to your local machine. 
+
+* Set up a firebase project at https://console.firebase.google.com/
+
+* `$ npm install` in the top directory of the project.
+
+* Create a .env file in the top level of this project and insert the following...
+
+<pre>
+REACT_APP_FIREBASE_API_KEY = "YOUR-UNIQUE-CREDENTIALS"
+REACT_APP_FIREBASE_AUTH_DOMAIN = "YOUR-PROJECT-NAME.firebaseapp.com"
+REACT_APP_FIREBASE_PROJECT_ID = "YOUR-PROJECT-FIREBASE-PROJECT-ID"
+REACT_APP_FIREBASE_STORAGE_BUCKET = "YOUR-PROJECT-NAME.appspot.com"
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID = "YOUR-PROJECT-SENDER-ID"
+REACT_APP_FIREBASE_APP_ID = "YOUR-PROJECT-APP-ID"
+</pre>
+
+* Replace all quoted items with your individual data found in the firebase settings of your project. 
+
+* `npm run start` in the top level of your directory. 
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -47,32 +81,18 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+### Check it out 
+ 
+_This application is hosted at https://help-queue-887ce.firebaseapp.com/_
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Known Bugs
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* styles don't appear on hosted site
 
-### Code Splitting
+### License 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+[Copyright](LICENSE)  (c) 09/20/2022 Liam Campbell
 
-### Analyzing the Bundle Size
+### Contact Information
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+_Feel free to reach out via [github](https://github.com/lcmpbll/)_
